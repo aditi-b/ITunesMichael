@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.example.itunesmichael.R
 import com.example.itunesmichael.model.SongsDetail
 import com.example.itunesmichael.ui.utils.AppUtils.px
@@ -54,29 +55,10 @@ class SongsListingDetailFragment : BaseFragment() {
             tvTrack.setText(getString(R.string.track_name)+" "+detail.trackName)
             tvDescription.setText(getString(R.string.artist_name)+" "+detail.artistName)
             tvCensoredName.setText(getString(R.string.censored_name)+" "+detail.collectionCensoredName)
-
-            ivCover.setImageBitmap(getBitmapFromURL(detail.artworkUrl60))
+            Glide.with(this).load(detail.artworkUrl60).into(ivCover)
         }
     }
 
-    fun getBitmapFromURL(src: String?): Bitmap? {
-        return try {
-            Log.e("src", src.toString())
-            val url = URL(src)
-            val connection =
-                url.openConnection() as HttpURLConnection
-            connection.doInput = true
-            connection.connect()
-            val input = connection.inputStream
-            val myBitmap = BitmapFactory.decodeStream(input)
-            Log.e("Bitmap", "returned")
-            myBitmap
-        } catch (e: IOException) {
-            e.printStackTrace()
-            Log.e("Exception", e.message.toString())
-            null
-        }
-    }
     /**
      * method to set up toolbar
      */
