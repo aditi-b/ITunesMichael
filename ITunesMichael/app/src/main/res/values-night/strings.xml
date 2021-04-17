@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="playlist">Playlist</string>
+    <string name="detail">Detail</string>
+    <string name="track_name">Track name:</string>
+    <string name="artist_name">Artist name:</string>
+    <string name="censored_name">Censored name:</string>
+</resources>
